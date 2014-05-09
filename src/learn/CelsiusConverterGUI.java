@@ -58,6 +58,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
 					}
     		   } 		   
     	);
+       resetButton.setToolTipText("Reset the value");
 
        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(layout);
@@ -75,11 +76,13 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                        .addComponent(fahrenheitLabel))
                    .addGroup(layout.createSequentialGroup()
-                	   .addComponent(resetLabel)
+                	   .addComponent(resetButton)
                 	   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                	   .addComponent(resetButton)))
+                	   .addComponent(resetLabel)))
                .addContainerGap(27, Short.MAX_VALUE))
        );
+       
+       resetButton.setEnabled(true);
 
        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {convertButton, tempTextField});
 
@@ -96,8 +99,8 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
                    .addComponent(fahrenheitLabel))
                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            		   .addComponent(resetLabel)
-            		   .addComponent(resetButton))
+            		   .addComponent(resetButton)
+            		   .addComponent(resetLabel))
                .addContainerGap(21, Short.MAX_VALUE))
        );
        pack();
@@ -112,7 +115,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
    
    private void resetActionButtonPerformed(ActionEvent e)
    {
-	   fahrenheitLabel.setText("0");
+	   fahrenheitLabel.setText("0 Fahrenheit");
    }
     
    /**
