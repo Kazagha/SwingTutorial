@@ -59,6 +59,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
     		   } 		   
     	);
        resetButton.setToolTipText("Reset the value");
+       resetButton.setMinimumSize(new java.awt.Dimension(20,50));
 
        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
        getContentPane().setLayout(layout);
