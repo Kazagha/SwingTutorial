@@ -10,8 +10,8 @@ public class AlcoholCalculator {
 	{
 		JLabel OGLabel = new JLabel("Original Gravity");
 		JLabel TGLabel = new JLabel("Terminal Gravity");
-		JTextField OGField = new JTextField();
-		JTextField TGField = new JTextField();
+		JTextField OGField = new JTextField(5);
+		JTextField TGField = new JTextField(5);
 		JButton calculate = new JButton();
 		
 		//Create and setup the window
@@ -25,9 +25,41 @@ public class AlcoholCalculator {
 		topMenu.setPreferredSize(new Dimension(300, 20));
 		
 		//Content Pane
-		JLabel content = new JLabel();
+		JPanel content = new JPanel();
 		content.setOpaque(true);
 		content.setPreferredSize(new Dimension(300, 150));
+				
+		content.add(OGLabel);
+		content.add(OGField);
+		content.add(TGLabel);
+		content.add(TGField);
+		
+		GroupLayout layout = new GroupLayout(content);
+		content.setLayout(layout);
+		
+		layout.setHorizontalGroup(
+				layout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(layout.createParallelGroup()
+						.addComponent(OGLabel)
+						.addComponent(TGLabel))
+					.addGroup(layout.createParallelGroup()
+						.addComponent(OGField)
+						.addComponent(TGField))
+					.addContainerGap()
+		);
+		
+		layout.setVerticalGroup(
+				layout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(OGLabel)
+						.addComponent(OGField))
+					.addContainerGap()
+					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(TGLabel)
+						.addComponent(TGField))
+				);
 		
 		//Add Menu and Content to root frame
 		frame.setJMenuBar(topMenu);
