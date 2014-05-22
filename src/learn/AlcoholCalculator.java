@@ -34,12 +34,14 @@ public class AlcoholCalculator {
 		calculateButton.addActionListener(
 				new ActionListener()
 				{
+					@Override
 					public void actionPerformed(ActionEvent evt)
 					{
 						percentActionButtonPerformed(evt);
 					}
 				}
 			);
+		calculateButton.setEnabled(true);
 		
 		//Create Menu
 		JMenuBar topMenu = new JMenuBar();
@@ -65,12 +67,13 @@ public class AlcoholCalculator {
 					.addContainerGap()
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGLabel)
-						.addComponent(TGLabel))
+						.addComponent(TGLabel)
+						.addComponent(calculateButton))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGField)
 						.addComponent(TGField)
-						.addComponent(calculateButton))
+						.addComponent(totalDisplay))
 					.addContainerGap()
 		);
 		
@@ -86,11 +89,12 @@ public class AlcoholCalculator {
 						.addComponent(TGField))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(calculateButton))
+						.addComponent(calculateButton)
+						.addComponent(totalDisplay))
 				);
 		
 		//Add Menu and Content to root frame
-		frame.setJMenuBar(topMenu);
+		//frame.setJMenuBar(topMenu);
 		frame.getContentPane().add(content);
 		
 		//Display the Window
@@ -101,6 +105,7 @@ public class AlcoholCalculator {
 	public void percentActionButtonPerformed(ActionEvent evt)
 	{
 		totalDisplay.setText("1%");
+		System.out.println(totalDisplay.getText());
 	}
 
 	//Calculate the alcohol content using the below formula
