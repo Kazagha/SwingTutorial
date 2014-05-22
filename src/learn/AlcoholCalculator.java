@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class AlcoholCalculator {
 	
-	JLabel totalDisplay = new JLabel();
+	JLabel totalDisplay = new JLabel("0%");
 	
 	public AlcoholCalculator()
 	{
@@ -19,7 +19,6 @@ public class AlcoholCalculator {
 		JLabel OGLabel = new JLabel("Original Gravity");
 		JLabel TGLabel = new JLabel("Terminal Gravity");
 		JLabel totalLabel = new JLabel("Alcohol Content:");
-		JLabel totalDisplay = new JLabel("0%");
 		JTextField OGField = new JTextField(5);
 		JTextField TGField = new JTextField(5);
 		JButton calculateButton = new JButton();
@@ -105,7 +104,6 @@ public class AlcoholCalculator {
 	public void percentActionButtonPerformed(ActionEvent evt)
 	{
 		totalDisplay.setText("1%");
-		System.out.println(totalDisplay.getText());
 	}
 
 	//Calculate the alcohol content using the below formula
