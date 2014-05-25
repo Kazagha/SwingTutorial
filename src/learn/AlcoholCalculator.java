@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class AlcoholCalculator {
 	
-	JLabel percentLabel = new JLabel("0%");
+	JLabel percentValue = new JLabel("0%");
 	JTextField OGField = new JTextField(5);
 	JTextField TGField = new JTextField(5);
 	
@@ -20,7 +20,7 @@ public class AlcoholCalculator {
 	{
 		JLabel OGLabel = new JLabel("Original Gravity");
 		JLabel TGLabel = new JLabel("Terminal Gravity");
-		JLabel totalLabel = new JLabel("Alcohol Content:");
+		JLabel percentLabel = new JLabel("Alcohol Content:");
 		JButton calculateButton = new JButton();
 
 		
@@ -67,12 +67,13 @@ public class AlcoholCalculator {
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGLabel)
 						.addComponent(TGLabel)
-						.addComponent(calculateButton))
+						.addComponent(calculateButton)
+						.addComponent(percentLabel))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGField)
 						.addComponent(TGField)
-						.addComponent(percentLabel))
+						.addComponent(percentValue))
 					.addContainerGap()
 		);
 		
@@ -91,6 +92,7 @@ public class AlcoholCalculator {
 						.addComponent(calculateButton))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(percentValue)
 						.addComponent(percentLabel))
 				);
 		
@@ -113,7 +115,7 @@ public class AlcoholCalculator {
 	
 	public void setPercent(double i)
 	{
-		percentLabel.setText(String.format("%.2f %%", i*100));
+		percentValue.setText(String.format("%.2f %%", i*100));
 	}
 
 	//Calculate the alcohol content using the below formula
