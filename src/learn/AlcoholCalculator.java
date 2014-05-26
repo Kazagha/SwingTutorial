@@ -10,6 +10,8 @@ public class AlcoholCalculator {
 	JLabel percentValue = new JLabel("0%");
 	JTextField OGField = new JTextField(5);
 	JTextField TGField = new JTextField(5);
+	JTextField percentField = new JTextField(5);
+	JTextField volumeField = new JTextField(5);
 	
 	public AlcoholCalculator()
 	{
@@ -63,7 +65,7 @@ public class AlcoholCalculator {
 		//Tabbed Pane
 		content.add(tabbedPane);
 		tabbedPane.addTab("Percent", percentPanel);
-		tabbedPane.addTab("Drinks", drinksPanel);
+		tabbedPane.addTab("Drinks", makeDrinksPanel());
 		
 		//Create Basic Layout for the tabbed pane
 		GroupLayout contentLayout = new GroupLayout(content);
@@ -124,6 +126,53 @@ public class AlcoholCalculator {
 		//Display the Window
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	protected JPanel makeDrinksPanel()
+	{
+		JPanel panel = new JPanel();
+		panel.setOpaque(true);
+		
+		JLabel volumeLabel = new JLabel("Volume (ml)");
+		JLabel percentLabel = new JLabel("Alcohol %");
+		JButton calculateButton = new JButton("Calculate");
+		//percentField volumeFiedl
+		
+		GroupLayout layout = new GroupLayout(panel);
+		panel.setLayout(layout);
+		
+		layout.setHorizontalGroup(
+				layout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(layout.createParallelGroup()
+						.addComponent(volumeLabel)
+						.addComponent(percentLabel))
+					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup()
+						.addComponent(volumeField)
+						.addComponent(percentField)
+						.addComponent(calculateButton))
+					.addContainerGap()
+				);
+				
+		layout.setVerticalGroup(
+				layout.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(percentLabel)
+					.addComponent(percentField))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(volumeLabel)
+					.addComponent(volumeField))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup()
+					.addComponent(calculateButton)
+					)
+				.addContainerGap()
+				);
+		
+		return panel;
 	}
 	
 	public void percentActionButtonPerformed(ActionEvent evt)
