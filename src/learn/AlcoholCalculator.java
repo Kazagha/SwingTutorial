@@ -18,11 +18,18 @@ public class AlcoholCalculator {
 	
 	public void createAndShowGUI()
 	{
+		//Create basic elements
+		JTabbedPane tabbedPane = new JTabbedPane();
+		
+		//Create the Alcohol Percent Calculator
+		JPanel percentPanel = new JPanel();
 		JLabel OGLabel = new JLabel("Original Gravity");
 		JLabel TGLabel = new JLabel("Terminal Gravity");
 		JLabel percentLabel = new JLabel("Alcohol Content:");
 		JButton calculateButton = new JButton();
-
+		
+		//Create Drinks per Volume Calculator
+		JPanel drinksPanel = new JPanel();
 		
 		//Create and setup the window
 		JFrame frame = new JFrame("Alcohol Calculator");
@@ -51,15 +58,29 @@ public class AlcoholCalculator {
 		//Content Pane
 		JPanel content = new JPanel();
 		content.setOpaque(true);
-		content.setPreferredSize(new Dimension(250, 125));
-				
-		content.add(OGLabel);
-		content.add(OGField);
-		content.add(TGLabel);
-		content.add(TGField);
+		content.setPreferredSize(new Dimension(250, 150));
 		
-		GroupLayout layout = new GroupLayout(content);
-		content.setLayout(layout);
+		//Tabbed Pane
+		content.add(tabbedPane);
+		tabbedPane.addTab("Percent", percentPanel);
+		tabbedPane.addTab("Drinks", drinksPanel);
+		
+		//Create Basic Layout for the tabbed pane
+		GroupLayout contentLayout = new GroupLayout(content);
+		content.setLayout(contentLayout);
+		
+		contentLayout.setHorizontalGroup(
+				contentLayout.createSequentialGroup()
+				.addComponent(tabbedPane)
+				);
+		contentLayout.setVerticalGroup(
+				contentLayout.createSequentialGroup()
+				.addComponent(tabbedPane)
+				);
+
+		//Create Layout for Percent Pane
+		GroupLayout layout = new GroupLayout(percentPanel);
+		percentPanel.setLayout(layout);		
 		
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
@@ -95,7 +116,7 @@ public class AlcoholCalculator {
 						.addComponent(percentValue)
 						.addComponent(percentLabel))
 				);
-		
+				
 		//Add Menu and Content to root frame
 		//frame.setJMenuBar(topMenu);
 		frame.getContentPane().add(content);
