@@ -146,10 +146,13 @@ public class AlcoholCalculator {
 					@Override
 					public void actionPerformed(ActionEvent evt)
 					{
-						stdDrinksValue.setText("1");
+						double percent = Double.valueOf(percentField.getText());
+						double volume = Double.valueOf(volumeField.getText());
+						double valueDouble = calcStdDrinks(percent, volume);
+						String valueString = String.format("%.2f", valueDouble);
+						stdDrinksValue.setText(String.valueOf(valueString));
 					}
-				}
-				);
+				});
 		
 		GroupLayout layout = new GroupLayout(panel);
 		panel.setLayout(layout);
