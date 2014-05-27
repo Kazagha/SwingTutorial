@@ -26,10 +26,6 @@ public class AlcoholCalculator {
 		
 		//Create the Alcohol Percent Calculator
 		JPanel percentPanel = new JPanel();
-		JLabel OGLabel = new JLabel("Original Gravity");
-		JLabel TGLabel = new JLabel("Terminal Gravity");
-		JLabel percentLabel = new JLabel("Alcohol Content:");
-		JButton calculateButton = new JButton();
 		
 		//Create Drinks per Volume Calculator
 		JPanel drinksPanel = new JPanel();
@@ -37,20 +33,6 @@ public class AlcoholCalculator {
 		//Create and setup the window
 		JFrame frame = new JFrame("Alcohol Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Setup Button
-		calculateButton.setText("Calculate");
-		calculateButton.addActionListener(
-				new ActionListener()
-				{
-					@Override
-					public void actionPerformed(ActionEvent evt)
-					{
-						percentActionButtonPerformed(evt);
-					}
-				}
-			);
-		calculateButton.setEnabled(true);
 		
 		//Create Menu
 		JMenuBar topMenu = new JMenuBar();
@@ -65,7 +47,7 @@ public class AlcoholCalculator {
 		
 		//Tabbed Pane
 		content.add(tabbedPane);
-		tabbedPane.addTab("Percent", percentPanel);
+		tabbedPane.addTab("Percent", makePercentPanel());
 		tabbedPane.addTab("Drinks", makeDrinksPanel());
 		
 		//Create Basic Layout for the tabbed pane
@@ -80,11 +62,29 @@ public class AlcoholCalculator {
 				contentLayout.createSequentialGroup()
 				.addComponent(tabbedPane)
 				);
-
-		//Create Layout for Percent Pane
-		GroupLayout layout = new GroupLayout(percentPanel);
-		percentPanel.setLayout(layout);		
+			
+		//Add Menu and Content to root frame
+		//frame.setJMenuBar(topMenu);
+		frame.getContentPane().add(content);
 		
+		//Display the Window
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	protected JPanel makePercentPanel()
+	{
+		//Create Swing Components
+		JPanel panel = new JPanel();
+		JLabel OGLabel = new JLabel("Original Gravity");
+		JLabel TGLabel = new JLabel("Terminal Gravity");
+		JLabel percentLabel = new JLabel("Alcohol Content:");
+		JButton calculateButton = new JButton();
+				
+		//Create Layout for Percent Pane
+		GroupLayout layout = new GroupLayout(panel);
+		panel.setLayout(layout);	
+				
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 					.addContainerGap()
@@ -119,14 +119,26 @@ public class AlcoholCalculator {
 						.addComponent(percentValue)
 						.addComponent(percentLabel))
 				);
-				
-		//Add Menu and Content to root frame
-		//frame.setJMenuBar(topMenu);
-		frame.getContentPane().add(content);
 		
-		//Display the Window
-		frame.pack();
-		frame.setVisible(true);
+		//Setup Calculate Button
+		calculateButton.setText("Calculate");
+		calculateButton.addActionListener(
+				new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent evt)
+					{
+						//percentActionButtonPerformed(evt);
+						double OG =  Double.valueOf(OGField.getText());
+						double TG = Double.valueOf(TGField.getText());
+						double percentage = calcAlcoholContent(OG, TG);
+						setPercent(percentage);
+					}
+				}
+			);
+		calculateButton.setEnabled(true);
+		
+		return panel;
 	}
 	
 	protected JPanel makeDrinksPanel()
@@ -233,7 +245,6 @@ public class AlcoholCalculator {
 	private double calcStdDrinks (double vol, double percent) {
 		return ((vol/1000) * percent * .789);
 	}
-
 	
 	public static void main(String[] args)
 	{
@@ -243,5 +254,5 @@ public class AlcoholCalculator {
 				new AlcoholCalculator();
 			}
 		});
-	}
+	}	
 }
