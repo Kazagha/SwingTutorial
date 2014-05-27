@@ -12,6 +12,7 @@ public class AlcoholCalculator {
 	JTextField TGField = new JTextField(5);
 	JTextField percentField = new JTextField(5);
 	JTextField volumeField = new JTextField(5);
+	JLabel stdDrinksValue = new JLabel("-");
 	
 	public AlcoholCalculator()
 	{
@@ -90,13 +91,13 @@ public class AlcoholCalculator {
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGLabel)
 						.addComponent(TGLabel)
-						.addComponent(calculateButton)
 						.addComponent(percentLabel))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup()
 						.addComponent(OGField)
 						.addComponent(TGField)
-						.addComponent(percentValue))
+						.addComponent(percentValue)
+						.addComponent(calculateButton))
 					.addContainerGap()
 		);
 		
@@ -136,7 +137,19 @@ public class AlcoholCalculator {
 		JLabel volumeLabel = new JLabel("Volume (ml)");
 		JLabel percentLabel = new JLabel("Alcohol %");
 		JButton calculateButton = new JButton("Calculate");
-		//percentField volumeFiedl
+		JLabel stdDrinksLabel = new JLabel("Standard Drinks:");
+		//percentField volumeFiedl stdDrinksValue
+		
+		calculateButton.addActionListener(
+				new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent evt)
+					{
+						stdDrinksValue.setText("1");
+					}
+				}
+				);
 		
 		GroupLayout layout = new GroupLayout(panel);
 		panel.setLayout(layout);
@@ -146,12 +159,14 @@ public class AlcoholCalculator {
 					.addContainerGap()
 					.addGroup(layout.createParallelGroup()
 						.addComponent(volumeLabel)
-						.addComponent(percentLabel))
+						.addComponent(percentLabel)
+						.addComponent(stdDrinksLabel))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup()
 						.addComponent(volumeField)
 						.addComponent(percentField)
-						.addComponent(calculateButton))
+						.addComponent(calculateButton)
+						.addComponent(stdDrinksValue))
 					.addContainerGap()
 				);
 				
@@ -166,9 +181,12 @@ public class AlcoholCalculator {
 					.addComponent(volumeLabel)
 					.addComponent(volumeField))
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-				.addGroup(layout.createParallelGroup()
-					.addComponent(calculateButton)
-					)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(calculateButton))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+					.addComponent(stdDrinksLabel)
+					.addComponent(stdDrinksValue))
 				.addContainerGap()
 				);
 		
@@ -188,11 +206,31 @@ public class AlcoholCalculator {
 		percentValue.setText(String.format("%.2f %%", i*100));
 	}
 
-	//Calculate the alcohol content using the below formula
-	//Where OG is original gravity and TG is terminal gravity
+	/**
+	 * Calculate Alcohol Content <br>
+	 * Calculate the alcohol content using the below formula <br>
+	 * Where OG is original gravity and TG is terminal gravity
+	 * @param OG - Original Gravity 
+	 * @param TG - Terminal Gravity
+	 * @return - The alcohol content 
+	 */
 	public double calcAlcoholContent(double OG, double TG) {
 		return (((1.05 * (OG - TG)) / TG) / .79);
 	} 
+	
+	/**
+	 * Calculate Standard Drinks 
+	 * Calculate the standard number of drinks using volume of the drink and percentage alcohol content
+	 * 375ml drink at 5% multiplied by .789 equals 1.5 standard drinks
+	 * 0.375 X 5 X 0.789 = 1.5 standard drinks
+	 * @param vol - Volume in ml
+	 * @param percent - Percent Alcohol
+	 * @return - Number of standard drinks
+	 */
+	private double calcStdDrinks (double vol, double percent) {
+		return ((vol/1000) * percent * .789);
+	}
+
 	
 	public static void main(String[] args)
 	{
