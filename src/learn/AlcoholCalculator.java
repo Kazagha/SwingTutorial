@@ -2,6 +2,7 @@ package learn;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
 
@@ -24,21 +25,12 @@ public class AlcoholCalculator {
 		//Create basic elements
 		JTabbedPane tabbedPane = new JTabbedPane();
 		
-		//Create the Alcohol Percent Calculator
-		JPanel percentPanel = new JPanel();
-		
-		//Create Drinks per Volume Calculator
-		JPanel drinksPanel = new JPanel();
-		
 		//Create and setup the window
 		JFrame frame = new JFrame("Alcohol Calculator");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Create Menu
-		JMenuBar topMenu = new JMenuBar();
-		topMenu.setOpaque(true);
-		topMenu.setBackground(new Color(154, 165, 127));
-		topMenu.setPreferredSize(new Dimension(250, 20));
+		JMenuBar topMenu = createMenu();
 		
 		//Content Pane
 		JPanel content = new JPanel();
@@ -64,7 +56,7 @@ public class AlcoholCalculator {
 				);
 			
 		//Add Menu and Content to root frame
-		//frame.setJMenuBar(topMenu);
+		frame.setJMenuBar(topMenu);
 		frame.getContentPane().add(content);
 		
 		//Display the Window
@@ -206,6 +198,30 @@ public class AlcoholCalculator {
 				);
 		
 		return panel;
+	}
+	
+	protected JMenuBar createMenu()
+	{
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setOpaque(true);
+		menuBar.setBackground(new Color(190, 190, 190));
+		menuBar.setPreferredSize(new Dimension(250, 20));
+		
+		JMenu menu = new JMenu("Menu");
+		menuBar.add(menu);
+				
+		JMenuItem exit = new JMenuItem("Exit");
+		exit.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.exit(0);
+			}
+		});
+		menu.add(exit);
+		
+		return menuBar;
 	}
 	
 	public void percentActionButtonPerformed(ActionEvent evt)
