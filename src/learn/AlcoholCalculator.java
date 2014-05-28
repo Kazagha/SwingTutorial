@@ -150,11 +150,15 @@ public class AlcoholCalculator {
 					@Override
 					public void actionPerformed(ActionEvent evt)
 					{
-						double percent = Double.valueOf(percentField.getText());
-						double volume = Double.valueOf(volumeField.getText());
-						double valueDouble = calcStdDrinks(percent, volume);
-						String valueString = String.format("%.2f", valueDouble);
-						stdDrinksValue.setText(String.valueOf(valueString));
+						try {
+							double percent = Double.valueOf(percentField.getText());
+							double volume = Double.valueOf(volumeField.getText());
+							double valueDouble = calcStdDrinks(percent, volume);
+							String valueString = String.format("%.2f", valueDouble);
+							stdDrinksValue.setText(String.valueOf(valueString));
+						} catch (NumberFormatException e) {
+							System.out.println("Number format Exception");
+						}
 					}
 				});
 		
@@ -204,7 +208,7 @@ public class AlcoholCalculator {
 	{
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setOpaque(true);
-		menuBar.setBackground(new Color(190, 190, 190));
+		//menuBar.setBackground(new Color(190, 190, 190));
 		menuBar.setPreferredSize(new Dimension(250, 20));
 		
 		JMenu menu = new JMenu("Menu");
