@@ -10,6 +10,7 @@ import sun.org.mozilla.javascript.internal.ast.TryStatement;
 
 public class AlcoholCalculator {
 	
+	JPanel content = new JPanel();
 	JLabel percentValue = new JLabel("0%");
 	JLabel stdDrinksValue = new JLabel("-");
 	JTextField OGField = new JTextField(5);
@@ -35,7 +36,7 @@ public class AlcoholCalculator {
 		JMenuBar topMenu = createMenu();
 		
 		//Content Pane
-		JPanel content = new JPanel();
+		//JPanel content = new JPanel();
 		content.setOpaque(true);
 		content.setPreferredSize(new Dimension(250, 150));
 		
@@ -128,7 +129,7 @@ public class AlcoholCalculator {
 							double percentage = calcAlcoholContent(OG, TG);
 							setPercent(percentage);
 						} catch (Exception e) {
-							JOptionPane.showMessageDialog(null, "Invalid Input:\n Please enter a number ", "Input Error",
+							JOptionPane.showMessageDialog(content, "Invalid Input:\n Please enter a number ", "Input Error",
 									JOptionPane.ERROR_MESSAGE);	
 						}
 					}
@@ -163,7 +164,7 @@ public class AlcoholCalculator {
 							String valueString = String.format("%.2f", valueDouble);
 							stdDrinksValue.setText(String.valueOf(valueString));
 						} catch (NumberFormatException e) {
-							JOptionPane.showMessageDialog(null, "Invalid Input:\n Please enter a number ", "Input Error",
+							JOptionPane.showMessageDialog(content, "Invalid Input:\n Please enter a number ", "Input Error",
 									JOptionPane.ERROR_MESSAGE);							
 						}
 					}
