@@ -6,14 +6,16 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
 
+import sun.org.mozilla.javascript.internal.ast.TryStatement;
+
 public class AlcoholCalculator {
 	
 	JLabel percentValue = new JLabel("0%");
+	JLabel stdDrinksValue = new JLabel("-");
 	JTextField OGField = new JTextField(5);
 	JTextField TGField = new JTextField(5);
 	JTextField percentField = new JTextField(5);
 	JTextField volumeField = new JTextField(5);
-	JLabel stdDrinksValue = new JLabel("-");
 	
 	public AlcoholCalculator()
 	{
@@ -120,11 +122,15 @@ public class AlcoholCalculator {
 					@Override
 					public void actionPerformed(ActionEvent evt)
 					{
-						//percentActionButtonPerformed(evt);
-						double OG =  Double.valueOf(OGField.getText());
-						double TG = Double.valueOf(TGField.getText());
-						double percentage = calcAlcoholContent(OG, TG);
-						setPercent(percentage);
+						try {
+							double OG =  Double.valueOf(OGField.getText());
+							double TG = Double.valueOf(TGField.getText());
+							double percentage = calcAlcoholContent(OG, TG);
+							setPercent(percentage);
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "Invalid Input:\n Please enter a number ", "Input Error",
+									JOptionPane.ERROR_MESSAGE);	
+						}
 					}
 				}
 			);
@@ -157,7 +163,8 @@ public class AlcoholCalculator {
 							String valueString = String.format("%.2f", valueDouble);
 							stdDrinksValue.setText(String.valueOf(valueString));
 						} catch (NumberFormatException e) {
-							System.out.println("Number format Exception");
+							JOptionPane.showMessageDialog(null, "Invalid Input:\n Please enter a number ", "Input Error",
+									JOptionPane.ERROR_MESSAGE);							
 						}
 					}
 				});
@@ -233,7 +240,7 @@ public class AlcoholCalculator {
 		double OG =  Double.valueOf(OGField.getText());
 		double TG = Double.valueOf(TGField.getText());
 		double percentage = calcAlcoholContent(OG, TG);
-		setPercent(percentage);
+		percentValue.setText(String.format("%.2f %%", percentage*100));
 	}
 	
 	public void setPercent(double i)
