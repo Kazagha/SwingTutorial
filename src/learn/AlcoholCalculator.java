@@ -241,6 +241,18 @@ public class AlcoholCalculator {
 		formulaSubmenu.add(alcoholFormula);
 		
 		JMenuItem drinksFormula = new JMenuItem("Standard Drinks");
+		drinksFormula.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String tempText = String.format(
+						  "Calculate the standard number of drinks%n"
+						+ "where .789 is the specific gravity of alcohol%n"
+						+ "375ml drink at 5%% multiplied by .789 equals 1.5 standard drinks%n"
+						+ "0.375 X 5 X 0.789 = 1.5 standard drinks");
+				JOptionPane.showMessageDialog(content, tempText, 
+						"Standard Drinks Formula", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		formulaSubmenu.add(drinksFormula);
 				
 		JMenuItem exit = new JMenuItem("Exit");
