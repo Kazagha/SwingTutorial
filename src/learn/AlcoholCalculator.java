@@ -136,6 +136,7 @@ public class AlcoholCalculator {
 				}
 			);
 		calculateButton.setEnabled(true);
+		calculateButton.setToolTipText("Calculate the percentage alcohol content");
 		
 		return panel;
 	}
@@ -169,6 +170,7 @@ public class AlcoholCalculator {
 						}
 					}
 				});
+		calculateButton.setToolTipText("Calculate number of standard drinks");
 		
 		GroupLayout layout = new GroupLayout(panel);
 		panel.setLayout(layout);
@@ -221,6 +223,25 @@ public class AlcoholCalculator {
 		
 		JMenu menu = new JMenu("Menu");
 		menuBar.add(menu);
+		
+		JMenu formulaSubmenu = new JMenu("Formula");
+		menu.add(formulaSubmenu);
+		
+		JMenuItem alcoholFormula = new JMenuItem("Alcohol Content");
+		alcoholFormula.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String tempText = String.format("Alcohol contenet is calculated using the below formula%n"
+						+ "where OG is Original Gravity and TG is Terminal Gravity%n"
+						+ "((1.05 * (OG - TG)) / TG) / .79");
+				JOptionPane.showMessageDialog(content, tempText, 
+						"Alcohol Content Formula", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		formulaSubmenu.add(alcoholFormula);
+		
+		JMenuItem drinksFormula = new JMenuItem("Standard Drinks");
+		formulaSubmenu.add(drinksFormula);
 				
 		JMenuItem exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() 
@@ -231,7 +252,7 @@ public class AlcoholCalculator {
 				System.exit(0);
 			}
 		});
-		menu.add(exit);
+		menu.add(exit);		
 		
 		return menuBar;
 	}
