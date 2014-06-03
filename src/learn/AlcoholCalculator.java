@@ -2,11 +2,7 @@ package learn;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
-
 import javax.swing.*;
-
-import sun.org.mozilla.javascript.internal.ast.TryStatement;
 
 public class AlcoholCalculator {
 	
