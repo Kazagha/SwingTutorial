@@ -2,8 +2,10 @@ package learn;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class JTreeGUI extends JPanel {
 
@@ -16,27 +18,70 @@ public class JTreeGUI extends JPanel {
 		JLabel titleLabel = new JLabel("Hierarchy Manager");
 		content.add(titleLabel);
 		
+		JPanel tree = createJTree();
+		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
 		
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(titleLabel)
+					.addGroup(layout.createParallelGroup()
+							.addComponent(titleLabel)
+							.addComponent(tree))
+					//.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addContainerGap());
 		
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(titleLabel)
+					.addGroup(layout.createParallelGroup()
+							.addComponent(titleLabel))	
+					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup()
+							.addComponent(tree))
 					.addContainerGap());
 	}
 	
 	private JPanel createJTree()
 	{
+		//Setup the root Panel
 		JPanel rootPanel = new JPanel();
+		rootPanel.setLayout(new GridLayout(1,0));
+		//rootPanel.setOpaque(true);
+		
+		//Set the root node 
+		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Lin Yutang");
+		JTree tree = new JTree(top);
+		
+		//Add Dummy Nodes
+		createNodes(top);
+				
+		//Setup the Scroll Pane
+		JScrollPane treeView = new JScrollPane(tree);
+		rootPanel.add(treeView);
 		
 		return rootPanel;
+	}
+	
+	public void createNodes(DefaultMutableTreeNode top)
+	{
+		DefaultMutableTreeNode book = new DefaultMutableTreeNode();
+		//Add Some Dummy Nodes
+		book = new DefaultMutableTreeNode("The Importance of Living");
+		top.add(book);
+		
+		book = new DefaultMutableTreeNode("A Leaf in the Storm");
+		top.add(book);
+		
+		book = new DefaultMutableTreeNode("The Wisdom of Laotse");
+		top.add(book);
+		
+		book = new DefaultMutableTreeNode("The Vigil of a Nation");
+		top.add(book);
+		
+		book = new DefaultMutableTreeNode("The Pleasure of a Nonconformist");
+		top.add(book);
 	}
 	
 	private static void createAndShowGUI()
