@@ -2,12 +2,14 @@ package learn;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
+	JButton fetchButton = new JButton();
 	
 	public MyView()
 	{
@@ -42,11 +44,16 @@ public class MyView extends JPanel {
 				.addContainerGap());
 	}
 	
-	private JPanel createContent()
+	public void setFetchButton(ActionListener a)
 	{
-		return new JPanel();
+		fetchButton.addActionListener(a);
 	}
 	
+	public void setText(String s)
+	{
+		text.setText(s);
+	}
+
 	private static void createAndShowGUI()
 	{
 		//Create frame setup Window
