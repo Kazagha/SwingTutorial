@@ -15,10 +15,11 @@ public class MyView extends JPanel {
 		rootPanel.setOpaque(true);
 		rootPanel.setVisible(true);
 		
-		JLabel titleLabel = new JLabel("This is a view:");
+		JLabel titleLabel = new JLabel("This is a view of a text box:");
 		rootPanel.add(titleLabel);
 		
 		text = new JTextField();
+		text.setEditable(false);
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
