@@ -18,6 +18,8 @@ public class MyView extends JPanel {
 		JLabel titleLabel = new JLabel("This is a view:");
 		rootPanel.add(titleLabel);
 		
+		text = new JTextField();
+		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
 		
@@ -25,13 +27,17 @@ public class MyView extends JPanel {
 				layout.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(layout.createParallelGroup()
-						.addComponent(titleLabel))
+						.addComponent(titleLabel)
+						.addComponent(text))
 				.addContainerGap());
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(layout.createParallelGroup()
 						.addComponent(titleLabel))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup()
+						.addComponent(text))
 				.addContainerGap());
 	}
 	
