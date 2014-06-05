@@ -9,7 +9,7 @@ import javax.swing.*;
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
-	JButton fetchButton = new JButton();
+	JButton fetchButton = new JButton("Fetch Text");
 	
 	public MyView()
 	{
@@ -31,16 +31,20 @@ public class MyView extends JPanel {
 				.addContainerGap()
 				.addGroup(layout.createParallelGroup()
 						.addComponent(titleLabel)
-						.addComponent(text))
+						.addComponent(text)
+						.addComponent(fetchButton))
 				.addContainerGap());
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 				.addContainerGap()
-				.addGroup(layout.createParallelGroup()
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(titleLabel))
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 				.addGroup(layout.createParallelGroup()
 						.addComponent(text))
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(fetchButton))
 				.addContainerGap());
 	}
 	
