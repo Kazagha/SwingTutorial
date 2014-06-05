@@ -7,15 +7,16 @@ import javax.swing.*;
 
 public class MyView extends JPanel {
 	
-	JPanel content = new JPanel();
+	JTextField text = new JTextField();
 	
 	public MyView()
 	{
-		content.setVisible(true);
-		content.setOpaque(true);
+		JPanel rootPanel = new JPanel();
+		rootPanel.setOpaque(true);
+		rootPanel.setVisible(true);
 		
-		JLabel titleLabel = new JLabel("This is a view");
-		content.add(titleLabel);
+		JLabel titleLabel = new JLabel("This is a view:");
+		rootPanel.add(titleLabel);
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -31,7 +32,12 @@ public class MyView extends JPanel {
 				.addContainerGap()
 				.addGroup(layout.createParallelGroup()
 						.addComponent(titleLabel))
-				.addContainerGap());		
+				.addContainerGap());
+	}
+	
+	private JPanel createContent()
+	{
+		return new JPanel();
 	}
 	
 	private static void createAndShowGUI()
