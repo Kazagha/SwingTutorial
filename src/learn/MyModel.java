@@ -18,17 +18,20 @@ public class MyModel {
 		return data.get(index);
 	}
 	
-	public void getNext()
+	public void nextText()
 	{
-		//int num = new Random().nextInt(data.size());
-		//Increment the index
-		if(index < data.size())
+		if(++index >= data.size())
 			{
-				index++;
-			} else {
 				index = 0;
-			}		
-		getText();
+			}
+	}
+	
+	public void prevText()
+	{
+		if(--index <= 0)
+		{
+			index = data.size() - 1;
+		}
 	}
 	
 	public void setText(String s)
