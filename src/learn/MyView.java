@@ -10,7 +10,7 @@ import javax.swing.*;
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
-	JButton fetchButton = new JButton("Fetch");
+	JButton fetchButton = new JButton("Next");
 	
 	public MyView()
 	{
@@ -51,8 +51,7 @@ public class MyView extends JPanel {
 
 	public void setNextButton(ActionListener a)
 	{
-		fetchButton.addActionListener(new test());
-		fetchButton.setText("IN ACTION");
+		fetchButton.addActionListener(a);
 	}
 	
 	public void setText(String s)
@@ -82,17 +81,4 @@ public class MyView extends JPanel {
 		frame.pack();
 		frame.setVisible(true);		
 	}
-	/*
-	public static void main(String[] args)
-	{
-		
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				createAndShowGUI();
-			}
-		});		
-	}
-	*/
 }
