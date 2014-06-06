@@ -24,9 +24,8 @@ public class MyController {
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//String tempText = model.getText();
-			//view.setText(tempText);
-			view.setText("Controller Test Action");
+			model.nextText();
+			view.setText(model.getText());
 		}	
 	}
 	
