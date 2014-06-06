@@ -6,6 +6,7 @@ import java.util.Random;
 public class MyModel {
 	
 	public ArrayList<String> data = new ArrayList<String>();
+	private int index = 0;
 
 	public MyModel()
 	{
@@ -14,8 +15,20 @@ public class MyModel {
 	
 	public String getText()
 	{
-		int num = new Random().nextInt(data.size());
-		return data.get(num);
+		return data.get(index);
+	}
+	
+	public void getNext()
+	{
+		//int num = new Random().nextInt(data.size());
+		//Increment the index
+		if(index < data.size())
+			{
+				index++;
+			} else {
+				index = 0;
+			}		
+		getText();
 	}
 	
 	public void setText(String s)
