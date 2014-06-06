@@ -2,6 +2,7 @@ package learn;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import javax.swing.*;
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
-	JButton fetchButton = new JButton("Fetch Text");
+	JButton fetchButton = new JButton("Fetch");
 	
 	public MyView()
 	{
@@ -47,18 +48,27 @@ public class MyView extends JPanel {
 						.addComponent(fetchButton))
 				.addContainerGap());
 	}
-	
-	public void setFetchButton(ActionListener a)
+
+	public void setNextButton(ActionListener a)
 	{
-		fetchButton.addActionListener(a);
+		fetchButton.addActionListener(new test());
+		fetchButton.setText("IN ACTION");
 	}
 	
 	public void setText(String s)
 	{
 		text.setText(s);
 	}
+	
+	class test implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			text.setText("Test Action");
+		}
+	}
 
-	private static void createAndShowGUI()
+	public void createAndShowGUI()
 	{
 		//Create frame setup Window
 		JFrame frame = new JFrame("My View");
@@ -66,21 +76,23 @@ public class MyView extends JPanel {
 		frame.setPreferredSize(new Dimension(250, 150));
 		
 		//Add the content  
-		frame.getContentPane().add(new MyView());
+		frame.getContentPane().add(this);
 		
 		//Display the window
 		frame.pack();
 		frame.setVisible(true);		
 	}
-	
+	/*
 	public static void main(String[] args)
 	{
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			
 			@Override
 			public void run() {
 				createAndShowGUI();
 			}
-		});
+		});		
 	}
+	*/
 }
