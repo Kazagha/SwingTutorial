@@ -12,23 +12,37 @@ public class MyController {
 	{
 		this.model = model;
 		this.view = view;
-		setActions();
+		this.view.setNextButton(new nextButton());
 	}
 	
 	public void setActions()
 	{
-		view.setFetchButton(fetchButton());
+		view.setNextButton(new nextButton());
 	}
 	
-	public ActionListener fetchButton()
+	class nextButton implements ActionListener
 	{
-		return new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			//String tempText = model.getText();
+			//view.setText(tempText);
+			view.setText("Controller Test Action");
+		}	
+	}
+	
+	public static void main(String args[])
+	{
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				String tempText = model.getText();
-				view.setText(tempText);
+			public void run() {
+				MyModel m = new MyModel();
+				MyView v = new MyView();
+				
+				new MyController(m, v);
+				
+				v.createAndShowGUI();
 			}
-		};
+		});	
 	}
 }
