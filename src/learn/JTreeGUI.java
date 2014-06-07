@@ -1,11 +1,13 @@
 package learn;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
 public class JTreeGUI extends JPanel {
 
@@ -97,6 +99,44 @@ public class JTreeGUI extends JPanel {
 		//Display the window
 		frame.pack();
 		frame.setVisible(true);		
+	}
+	
+	class MyTreeRenderer extends DefaultTreeCellRenderer 
+	{
+		Icon blue;
+		Icon red;
+		//ImageIcon blam = new ImageIcon("images/middle.gif");
+		MyTreeRenderer()
+		{
+			blue = new ImageIcon("images/middle.gif");
+		}
+		
+		public Component getTreeCellRendererComponent(
+                JTree tree,
+                Object value,
+                boolean sel,
+                boolean expanded,
+                boolean leaf,
+                int row,
+                boolean hasFocus)
+		{
+			super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+			if(leaf && isStorm(value))
+			{
+				setIcon(blue);
+			}
+			return this;
+		}
+		
+		public boolean isStorm (Object obj)
+		{
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)obj;
+			String name = node.toString().toLowerCase();
+			//name.toLowerCase();
+			return name.contains("storm");			
+		}
+		
+		
 	}
 	
 	public static void main(String[] args)
