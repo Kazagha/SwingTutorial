@@ -109,9 +109,13 @@ public class JTreeGUI extends JPanel {
 	{
 		Icon blue;
 		Icon red;
+		Icon green;
+		Icon book;
 		MyTreeRenderer()
 		{
 			blue = new ImageIcon("images/middle.gif");
+			book = new ImageIcon("images/books.jpg");
+			green = new ImageIcon("images/checkmarkgreen.gif");
 		}
 		
 		public Component getTreeCellRendererComponent(
@@ -124,10 +128,19 @@ public class JTreeGUI extends JPanel {
                 boolean hasFocus)
 		{
 			super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
-			if(leaf && isStorm(value))
+			
+			//Set all leaf nodes icons to a book
+			if(leaf)
 			{
-				setIcon(blue);
+				setIcon(book);
 			}
+			
+			//Set 'tick' icon on read books
+			if(leaf && isRead(value))
+			{
+				setIcon(green);
+			}
+			
 			return this;
 		}
 		
@@ -137,7 +150,25 @@ public class JTreeGUI extends JPanel {
 			String name = node.toString().toLowerCase();
 			//name.toLowerCase();
 			return name.contains("storm");			
-		}		
+		}
+		
+		/**
+		 * Check if the specified book node has been read
+		 * @param obj - Specified Node
+		 * @return boolean - true if book has been read
+		 */
+		public boolean isRead (Object obj)
+		{			
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)obj;
+			if(node.getUserObject() instanceof bookData)
+			{
+				bookData nodeInfo = (bookData)node.getUserObject();
+				return nodeInfo.isRead();
+			} else {
+				return false;
+			}
+
+		}
 	}
 	
 	class bookData {
