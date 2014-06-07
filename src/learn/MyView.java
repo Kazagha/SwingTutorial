@@ -6,12 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
 
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
 	JButton nextButton = new JButton("Next");
-	JButton prevButton = new JButton("Previous");
+	JButton prevButton = new JButton("Prev");
 	
 	public MyView()
 	{
@@ -34,7 +35,7 @@ public class MyView extends JPanel {
 				.addGroup(layout.createParallelGroup()
 						.addComponent(titleLabel)
 						.addComponent(text)
-						.addGroup(layout.createSequentialGroup()
+						.addGroup(Alignment.CENTER, layout.createSequentialGroup()
 							.addComponent(prevButton)
 							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 							.addComponent(nextButton)))
