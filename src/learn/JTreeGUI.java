@@ -71,21 +71,22 @@ public class JTreeGUI extends JPanel {
 	
 	public void createNodes(DefaultMutableTreeNode top)
 	{
-		DefaultMutableTreeNode book = new DefaultMutableTreeNode();
+		DefaultMutableTreeNode book;
 		//Add Some Dummy Nodes
-		book = new DefaultMutableTreeNode("The Importance of Living");
+	
+		book = new DefaultMutableTreeNode(new bookData("The Importance of Living", true));
 		top.add(book);
 		
-		book = new DefaultMutableTreeNode("A Leaf in the Storm");
+		book = new DefaultMutableTreeNode(new bookData("A Leaf in the Storm", true));
 		top.add(book);
 		
-		book = new DefaultMutableTreeNode("The Wisdom of Laotse");
+		book = new DefaultMutableTreeNode(new bookData("The Wisdom of Laotse", true));
 		top.add(book);
 		
-		book = new DefaultMutableTreeNode("The Vigil of a Nation");
+		book = new DefaultMutableTreeNode(new bookData("The Vigil of a Nation", false));
 		top.add(book);
 		
-		book = new DefaultMutableTreeNode("The Pleasure of a Nonconformist");
+		book = new DefaultMutableTreeNode(new bookData("The Pleasure of a Nonconformist", false));
 		top.add(book);
 	}
 	
