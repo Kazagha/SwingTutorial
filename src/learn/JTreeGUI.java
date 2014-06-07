@@ -108,14 +108,9 @@ public class JTreeGUI extends JPanel {
 	{
 		Icon blue;
 		Icon red;
-		//ImageIcon blam = new ImageIcon("images/middle.gif");
 		MyTreeRenderer()
 		{
 			blue = new ImageIcon("images/middle.gif");
-			if(blue != null)
-			{
-				System.out.println("win");
-			}
 		}
 		
 		public Component getTreeCellRendererComponent(
@@ -142,6 +137,32 @@ public class JTreeGUI extends JPanel {
 			//name.toLowerCase();
 			return name.contains("storm");			
 		}		
+	}
+	
+	class bookData {
+		public String bookName;
+		public boolean read;
+		
+		bookData(String bookName, boolean read)
+		{
+			this.bookName = bookName;
+			this.read = read;
+		}
+		
+		public String getName()
+		{
+			return bookName;
+		}
+		
+		public String toString()
+		{
+			return bookName;
+		}
+		
+		public boolean isRead()
+		{
+			return read;
+		}
 	}
 	
 	public static void main(String[] args)
