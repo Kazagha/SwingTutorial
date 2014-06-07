@@ -54,7 +54,10 @@ public class JTreeGUI extends JPanel {
 		
 		//Set the root node 
 		DefaultMutableTreeNode top = new DefaultMutableTreeNode("Lin Yutang");
+		
+		//Create the JTree
 		JTree tree = new JTree(top);
+		tree.setCellRenderer(new MyTreeRenderer());
 		
 		//Add Dummy Nodes
 		createNodes(top);
@@ -109,6 +112,10 @@ public class JTreeGUI extends JPanel {
 		MyTreeRenderer()
 		{
 			blue = new ImageIcon("images/middle.gif");
+			if(blue != null)
+			{
+				System.out.println("win");
+			}
 		}
 		
 		public Component getTreeCellRendererComponent(
@@ -134,9 +141,7 @@ public class JTreeGUI extends JPanel {
 			String name = node.toString().toLowerCase();
 			//name.toLowerCase();
 			return name.contains("storm");			
-		}
-		
-		
+		}		
 	}
 	
 	public static void main(String[] args)
