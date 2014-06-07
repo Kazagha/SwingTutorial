@@ -12,12 +12,13 @@ public class MyController {
 	{
 		this.model = model;
 		this.view = view;
-		this.view.setNextButton(new nextButton());
+		setActions();
 	}
 	
 	public void setActions()
 	{
 		view.setNextButton(new nextButton());
+		view.setPrevButton(new prevButton());
 	}
 	
 	class nextButton implements ActionListener
@@ -27,6 +28,16 @@ public class MyController {
 			model.nextText();
 			view.setText(model.getText());
 		}	
+	}
+	
+	class prevButton implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent arg0)
+		{
+			model.prevText();
+			view.setText(model.getText());
+		}
 	}
 	
 	public static void main(String args[])

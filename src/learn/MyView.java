@@ -10,7 +10,8 @@ import javax.swing.*;
 public class MyView extends JPanel {
 	
 	JTextField text = new JTextField();
-	JButton fetchButton = new JButton("Next");
+	JButton nextButton = new JButton("Next");
+	JButton prevButton = new JButton("Previous");
 	
 	public MyView()
 	{
@@ -33,7 +34,10 @@ public class MyView extends JPanel {
 				.addGroup(layout.createParallelGroup()
 						.addComponent(titleLabel)
 						.addComponent(text)
-						.addComponent(fetchButton))
+						.addGroup(layout.createSequentialGroup()
+							.addComponent(prevButton)
+							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+							.addComponent(nextButton)))
 				.addContainerGap());
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
@@ -45,13 +49,19 @@ public class MyView extends JPanel {
 						.addComponent(text))
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-						.addComponent(fetchButton))
+						.addComponent(prevButton)
+						.addComponent(nextButton))
 				.addContainerGap());
 	}
 
 	public void setNextButton(ActionListener a)
 	{
-		fetchButton.addActionListener(a);
+		nextButton.addActionListener(a);
+	}
+	
+	public void setPrevButton(ActionListener a)
+	{
+		prevButton.addActionListener(a);
 	}
 	
 	public void setText(String s)
