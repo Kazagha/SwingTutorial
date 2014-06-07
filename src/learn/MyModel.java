@@ -20,7 +20,7 @@ public class MyModel {
 	
 	public void nextText()
 	{
-		if(++index >= data.size())
+		if(++index > data.size() - 1)
 			{
 				index = 0;
 			}
@@ -28,7 +28,7 @@ public class MyModel {
 	
 	public void prevText()
 	{
-		if(--index <= 0)
+		if(--index < 0)
 		{
 			index = data.size() - 1;
 		}
