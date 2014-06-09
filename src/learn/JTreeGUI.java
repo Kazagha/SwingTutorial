@@ -1,6 +1,7 @@
 package learn;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -115,7 +116,8 @@ public class JTreeGUI extends JPanel {
 		{
 			blue = new ImageIcon("images/middle.gif");
 			book = new ImageIcon("images/books.jpg");
-			green = new ImageIcon("images/checkmarkgreen.gif");
+			//green = new ImageIcon("images/checkmarkgreen.gif");
+			green = new ImageIcon("images/check_tick.png");
 		}
 		
 		public Component getTreeCellRendererComponent(
@@ -139,6 +141,8 @@ public class JTreeGUI extends JPanel {
 			if(leaf && isRead(value))
 			{
 				setIcon(green);
+				setForeground(new Color(34,139,34));
+				setBackground(new Color(205,92,92));
 			}
 			
 			return this;
@@ -167,7 +171,6 @@ public class JTreeGUI extends JPanel {
 			} else {
 				return false;
 			}
-
 		}
 	}
 	
