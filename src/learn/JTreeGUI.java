@@ -114,10 +114,8 @@ public class JTreeGUI extends JPanel {
 		Icon book;
 		MyTreeRenderer()
 		{
-			blue = new ImageIcon("images/middle.gif");
-			book = new ImageIcon("images/books.jpg");
-			//green = new ImageIcon("images/checkmarkgreen.gif");
-			green = new ImageIcon("images/check_tick.png");
+			book = new ImageIcon("images/book.png");
+			green = new ImageIcon("images/input-checked.png");
 		}
 		
 		public Component getTreeCellRendererComponent(
@@ -142,7 +140,6 @@ public class JTreeGUI extends JPanel {
 			{
 				setIcon(green);
 				setForeground(new Color(34,139,34));
-				setBackground(new Color(205,92,92));
 			}
 			
 			return this;
