@@ -1,11 +1,13 @@
 package statusBar;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 import learn.MyController;
@@ -28,9 +30,22 @@ public class ViewStatusBar extends JPanel {
 	JLabel activeLabel = new JLabel("Active");
 	JLabel selectedLabel = new JLabel("Selected");
 	
-	JPanel inactivePanel = new JPanel();
-	JPanel activePanel = new JPanel();
-	JPanel selectedPanel = new JPanel();
+	JTextField inactiveTextField = new JTextField();
+	JTextField activeTextField = new JTextField();
+	JTextField selectedTextField = new JTextField();
+	
+	JLabel inactiveStatus = new JLabel("50");
+	JLabel activeStatus = new JLabel("10");
+	JLabel selectedStatus = new JLabel("1");
+		
+	//JStatusBar test = new JStatusBar();
+	MyStatusBar status = new MyStatusBar();
+	status.addRightComponent(inactiveStatus, Color.GRAY);
+	status.addRightComponent(activeStatus, Color.ORANGE);
+	status.addRightComponent(selectedStatus, Color.GREEN);
+	
+	status.setLeftComponent(new JLabel("Loading..."));
+	
 	
 	GroupLayout layout = new GroupLayout(this);
 	setLayout(layout);
@@ -43,11 +58,14 @@ public class ViewStatusBar extends JPanel {
 						.addComponent(inactiveLabel)
 						.addComponent(activeLabel)
 						.addComponent(selectedLabel))
-					.addContainerGap())
-				.addGroup(layout.createSequentialGroup()
-					.addContainerGap()
+					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+					.addGroup(layout.createParallelGroup()
+						.addComponent(inactiveTextField)
+						.addComponent(activeTextField)
+						.addComponent(selectedTextField))
 					.addContainerGap()
 					)
+				.addComponent(status)
 				);
 	
 	layout.setVerticalGroup(
@@ -56,20 +74,26 @@ public class ViewStatusBar extends JPanel {
 				
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(inactiveLabel)
+						.addComponent(inactiveTextField)
 						)
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 				
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(activeLabel)
+						.addComponent(activeTextField)
 						)
 				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)		
 				
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(selectedLabel)
+						.addComponent(selectedTextField)
 						)
-				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)				
 				
-				.addContainerGap()			
+				.addGap(20, 1000, 1000)
+				
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+						//.addComponent(test, 23, 23, 23))
+						.addComponent(status))
 			);
 	}
 	
