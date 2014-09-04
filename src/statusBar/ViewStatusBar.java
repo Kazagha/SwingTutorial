@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.event.DocumentEvent;
@@ -38,13 +39,17 @@ public class ViewStatusBar extends JPanel {
 	JTextField activeTextField;
 	JTextField selectedTextField;
 	
+	JProgressBar progress;
+	
+	MyStatusBar status;
+	
 	public ViewStatusBar()
 	{
 	JPanel rootPanel = new JPanel();
 	rootPanel.setOpaque(true);
 	rootPanel.setVisible(true);
 
-	setButton.setText("Set Active");
+	setButton.setText("Update");
 	setButton.addActionListener(new MyActionListener());
 	
 	JLabel inactiveLabel = new JLabel("Nodes");
@@ -69,12 +74,14 @@ public class ViewStatusBar extends JPanel {
 	selectedStatus = new JLabel("---");
 	
 	//JStatusBar test = new JStatusBar();
-	MyStatusBar status = new MyStatusBar();
+	status = new MyStatusBar();
 	status.addRightComponent(inactiveStatus, Color.GRAY);
 	status.addRightComponent(activeStatus, Color.ORANGE);
 	status.addRightComponent(selectedStatus, Color.GREEN);
 	
-	status.setLeftComponent(new JLabel("Loading..."));	
+	status.setLeftComponent(new JLabel("Loading..."));
+	progress = new JProgressBar(0, 100);
+	status.setLeftComponent(progress);
 	
 	GroupLayout layout = new GroupLayout(this);
 	setLayout(layout);
@@ -153,8 +160,10 @@ public class ViewStatusBar extends JPanel {
 	{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			String tempString = selectedTextField.getText();
-			selectedStatus.setText(tempString);
+			if(progress.getValue() < 100)
+			{
+				progress.setValue(progress.getValue() + 5);
+			}
 		}
 		
 	}
