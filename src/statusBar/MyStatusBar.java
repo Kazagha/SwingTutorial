@@ -41,6 +41,11 @@ public class MyStatusBar extends JPanel {
 		leftPanel.add(component);
 	}
 	
+	public void nullLeftComponent()
+	{
+		leftPanel.removeAll();
+	}
+	
 	public void addRightComponent(JComponent component, Color color)
 	{
 		JPanel panel = new JPanel(new FlowLayout(
