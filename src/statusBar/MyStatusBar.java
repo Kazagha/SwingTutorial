@@ -28,12 +28,12 @@ public class MyStatusBar extends JPanel {
 		setPreferredSize(new Dimension(getWidth(), 23));
 		
 		leftPanel = new JPanel(new FlowLayout(
-				FlowLayout.LEADING, 8, 4));
+				FlowLayout.LEADING, 8, 6));
 		leftPanel.setOpaque(false);
 		add(leftPanel, BorderLayout.WEST);
 		
 		rightPanel = new JPanel(new FlowLayout(
-				FlowLayout.TRAILING, 8, 4));
+				FlowLayout.TRAILING, 8, 6));
 		rightPanel.setOpaque(false);
 		add(rightPanel, BorderLayout.EAST);		
 	}
@@ -71,6 +71,7 @@ public class MyStatusBar extends JPanel {
 	        g.drawLine(0, y, getWidth(), y);
 	        y++;
 	 
+	        /*
 	        g.setColor(new Color(196, 194, 183));
 	        g.drawLine(0, y, getWidth(), y);
 	        y++;
@@ -81,7 +82,8 @@ public class MyStatusBar extends JPanel {
 	 
 	        g.setColor(new Color(233, 231, 217));
 	        g.drawLine(0, y, getWidth(), y);
-	 
+	        */
+	        
 	        y = getHeight() - 3;
 	 
 	        g.setColor(new Color(233, 232, 218));
