@@ -28,12 +28,12 @@ public class MyStatusBar extends JPanel {
 		setPreferredSize(new Dimension(getWidth(), 23));
 		
 		leftPanel = new JPanel(new FlowLayout(
-				FlowLayout.LEADING, 8, 6));
+				FlowLayout.LEADING, 8, 5));
 		leftPanel.setOpaque(false);
 		add(leftPanel, BorderLayout.WEST);
 		
 		rightPanel = new JPanel(new FlowLayout(
-				FlowLayout.TRAILING, 8, 6));
+				FlowLayout.TRAILING, 8, 5));
 		rightPanel.setOpaque(false);
 		add(rightPanel, BorderLayout.EAST);		
 	}
@@ -43,9 +43,9 @@ public class MyStatusBar extends JPanel {
 		leftPanel.add(component);
 	}
 	
-	public void nullLeftComponent()
+	public void removeLeftComponent(JComponent component)
 	{
-		leftPanel.removeAll();
+		leftPanel.remove(component);
 	}
 	
 	public void addRightComponent(JComponent component, Color color)
@@ -62,6 +62,12 @@ public class MyStatusBar extends JPanel {
 		
 		rightPanel.add(panel);
 	}	
+	
+	public void removeRightComponent(JComponent component)
+	{
+		rightPanel.remove(component);
+	}	
+	
 	   @Override
 	    protected void paintComponent(Graphics g) {
 	        super.paintComponent(g);
