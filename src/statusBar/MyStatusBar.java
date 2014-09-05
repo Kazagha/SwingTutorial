@@ -26,12 +26,12 @@ public class MyStatusBar extends JPanel {
 		setPreferredSize(new Dimension(getWidth(), 23));
 		
 		leftPanel = new JPanel(new FlowLayout(
-				FlowLayout.LEADING, 8, 5));
+				FlowLayout.LEADING, 8, 4));
 		leftPanel.setOpaque(false);
 		add(leftPanel, BorderLayout.WEST);
 		
 		rightPanel = new JPanel(new FlowLayout(
-				FlowLayout.TRAILING, 8, 5));
+				FlowLayout.TRAILING, 8, 4));
 		rightPanel.setOpaque(false);
 		add(rightPanel, BorderLayout.EAST);		
 	}
