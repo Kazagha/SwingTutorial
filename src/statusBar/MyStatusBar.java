@@ -7,8 +7,6 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Insets;
 
-import javafx.scene.layout.Border;
-
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
