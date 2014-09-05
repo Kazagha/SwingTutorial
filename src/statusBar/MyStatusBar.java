@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Insets;
 
 import javafx.scene.layout.Border;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -51,7 +53,10 @@ public class MyStatusBar extends JPanel {
 		JPanel panel = new JPanel(new FlowLayout(
 				FlowLayout.LEADING, 20, 0));
 		panel.setBackground(color);
-		component.setForeground(Color.WHITE);
+		component.setForeground(Color.BLACK);
+		
+		javax.swing.border.Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
+		panel.setBorder(blackLine);
 		
 		panel.add(component);
 		
