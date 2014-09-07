@@ -51,7 +51,7 @@ public class MyStatusBar extends JPanel {
 		JPanel panel = new JPanel(new FlowLayout(
 				FlowLayout.LEADING, 20, 0));
 		panel.setBackground(color);
-		component.setForeground(Color.BLACK);
+		//component.setForeground(Color.BLACK);
 		
 		javax.swing.border.Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
 		panel.setBorder(blackLine);
